@@ -3,3 +3,12 @@
 	height: 100%;
 	width: 100%;
 }
+#dashboard #calendar {
+	height: 100%;
+	width: 100%;
+	background: rgba(140, 126, 181, 0.254);
+}
+.selectionInfoComponent {
+	height: 100%;
+	background: rgba(55, 126, 181, 0.254);
+}
