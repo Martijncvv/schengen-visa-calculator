@@ -1,14 +1,169 @@
+a {
+	margin: 6px 3px 0;
+}
+
 #dashboard {
-	/* background: red; */
+	display: flex;
+	flex-wrap: wrap;
+
 	height: 100%;
 	width: 100%;
+	background: rgb(255, 245, 228);
 }
-#dashboard #calendar {
-	height: 100%;
+
+#calendar-field {
+	height: 100vh;
+	height: auto;
+
+	display: flex;
+	flex-direction: column;
+
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.calendar {
+	/* CALENDAR COMPONENT STYLING */
+	height: 760px;
+}
+.month-container {
+	margin-bottom: 20px;
+}
+
+#calendar-legenda-field {
+	width: 300px;
+	margin: 10px 0 20px 0;
+	padding: 12px 20px;
+
+	background: rgb(255, 250, 241);
+
+	font-size: 16px;
+	text-align: justify;
+}
+#calendar-legenda-field > p {
+	margin: 0px 0 3px;
+}
+
+#info-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	padding: 18px 30px;
+	border-radius: 8px;
+
+	background: rgb(240, 229, 211);
+
+	font-size: 24px;
+}
+
+#interaction-field {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	margin: 0 0 30px;
+	justify-content: space-between;
 	width: 100%;
-	background: rgba(140, 126, 181, 0.254);
 }
-.selectionInfoComponent {
-	height: 100%;
-	background: rgba(55, 126, 181, 0.254);
+#controldate-input-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	min-width: 240px;
+	margin: 10px auto;
+	padding: 12px 0 12px;
+
+	background: rgb(255, 250, 241);
+
+	font-size: 28px;
+}
+#control-date-picker {
+	font-size: 16px;
+}
+
+#reset-button {
+	margin: 12px 0 0;
+}
+
+#top-explanation-field {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	min-width: 150px;
+	margin: 10px auto;
+
+	padding: 12px 20px;
+
+	background: rgb(255, 250, 241);
+
+	font-size: 16px;
+	text-align: left;
+}
+
+#top-explanation-field > p {
+	margin: 2px 0 2px;
+}
+
+#bottom-explanation-field {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+
+	margin: 40px 0 0;
+	padding: 12px 20px;
+
+	background: rgb(255, 250, 241);
+
+	font-size: 16px;
+	text-align: justify;
+}
+
+#bottom-explanation-field > p {
+	margin: 2px 0 4px;
+}
+
+.counter-block {
+	background: rgb(255, 250, 241);
+	width: 40%;
+	min-width: 10px;
+	margin: 12px 0px;
+	padding: 12px 4px;
+}
+
+#calendar-field {
+	width: 100%;
+}
+#info-field {
+	width: 100%;
+}
+
+.bottom-border-shadow {
+	border-radius: 8px;
+
+	border-bottom: 5px solid rgb(188, 183, 170);
+	box-shadow: 0 2px 2px rgb(2 2 2 / 2%);
+	box-shadow: 0 6px 5px rgb(2 2 2 / 2%);
+	box-shadow: 0 12px 10px rgb(2 2 2 / 3%);
+}
+/* Tablet */
+@media (min-width: 900px) {
+	#calendar-field {
+		width: 50%;
+	}
+	#info-field {
+		width: 50%;
+	}
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+	#calendar-field {
+		width: 60%;
+	}
+	#info-field {
+		width: 40%;
+	}
 }
