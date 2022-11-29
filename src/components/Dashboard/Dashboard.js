@@ -292,7 +292,7 @@ const Dashboard = () => {
 						More info on
 						<a
 							style={{ color: 'rgb(50, 97, 159)' }}
-							target="_blank"
+							rel="noreferrer"
 							href="https://www.schengenvisainfo.com/"
 						>
 							SchengenVisaInfo
@@ -301,7 +301,7 @@ const Dashboard = () => {
 					<p>
 						<a
 							style={{ color: 'rgb(50, 97, 159)' }}
-							target="_blank"
+							rel="noreferrer"
 							href="https://www.linkedin.com/in/martijnvanven/"
 						>
 							Contact
