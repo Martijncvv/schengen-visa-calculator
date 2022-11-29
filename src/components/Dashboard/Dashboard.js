@@ -194,12 +194,14 @@ const Dashboard = () => {
 		}
 	}
 	// console.log('selectedDates: ', selectedDates)
-
+	const calendarprop = {
+		style: 'custom',
+	}
 	return (
 		<div id="dashboard">
 			<div id="calendar-field">
 				<Calendar
-					style={'custom'}
+					style={calendarprop.style}
 					customDataSourceRenderer={handleDayStyle}
 					roundRangeLimits={false}
 					// allowOverlap={false}
