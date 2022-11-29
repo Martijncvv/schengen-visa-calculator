@@ -2,6 +2,10 @@ a {
 	margin: 6px 3px 0;
 }
 
+div > h4 {
+	margin: 12px 0 6px 0;
+}
+
 #dashboard {
 	display: flex;
 	flex-wrap: wrap;
@@ -61,7 +65,7 @@ a {
 	flex-wrap: wrap;
 	justify-content: center;
 
-	margin: 0 0 30px;
+	margin: 0 0 18px;
 	justify-content: space-between;
 	width: 100%;
 }
@@ -128,8 +132,8 @@ a {
 .counter-block {
 	background: rgb(255, 250, 241);
 	width: 40%;
-	min-width: 10px;
-	margin: 12px 0px;
+	min-width: 150px;
+	margin: 4px 0px 0;
 	padding: 12px 4px;
 }
 

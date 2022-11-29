@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Calendar from 'rc-year-calendar'
 import './Dashboard.css'
-import Dateslist from '../Dateslist'
+
 import Button from 'react-bootstrap/Button'
 
 const Dashboard = () => {
@@ -66,7 +66,7 @@ const Dashboard = () => {
 		let endDate = new Date(dayInfo)
 
 		let controlTimeRange = {
-			startTime: endDate.getTime() - 180 * 24 * 3600 * 1000,
+			startTime: endDate.getTime() - 179 * 24 * 3600 * 1000,
 			endTime: endDate.getTime(),
 		}
 
@@ -76,7 +76,7 @@ const Dashboard = () => {
 			endDate: new Date(controlTimeRange.endTime),
 			isControlDate: true,
 		}
-		console.log('newControlInfo:', newControlInfo)
+
 		let controlDate = selectedDates.find((element) => element.id === 9999)
 		if (controlDate) {
 			setSelectedDates((selectedDates) =>
@@ -118,31 +118,42 @@ const Dashboard = () => {
 
 		return `${stayInControlRange}`
 	}
-	// const calcFresh90Days = () => {
-	// 	if (!(selectedDates.length > 0)) {
-	// 		return 'No dates selected'
-	// 	}
-	// 	let controlDate = selectedDates.find((element) => element.id === 9999)
-	// 	if (!controlDate) {
-	// 		return 'Set control date'
-	// 	}
+	const getLatestStayTime = () => {
+		if (!(selectedDates.length > 0)) {
+			return 0
+		}
 
-	// 	let latestTime = 0
-	// 	selectedDates.forEach((dateRange) => {
-	// 		if (dateRange.id != 9999) {
-	// 			let endTime = dateRange.endDate.getTime()
-	// 			if (endTime > latestTime) {
-	// 				latestTime = endTime
-	// 			}
-	// 		}
-	// 	})
+		let latestTime = 0
+		selectedDates.forEach((dateRange) => {
+			if (dateRange.id != 9999) {
+				let endTime = dateRange.endDate.getTime()
+				if (endTime > latestTime) {
+					latestTime = endTime
+				}
+			}
+		})
 
-	// 	let new90Days = latestTime + 90 * 24 * 3600 * 1000
-	// 	if (latestTime == 0) {
-	// 		return 'No dates selected'
-	// 	}
-	// 	return `${new Date(new90Days).toLocaleDateString()}`
-	// }
+		if (latestTime == 0) {
+			return 0
+		}
+		return latestTime
+	}
+
+	const getNew90Days = () => {
+		if (!(selectedDates.length > 0)) {
+			return 'No dates selected'
+		}
+
+		let latestTime = getLatestStayTime()
+
+		if (latestTime == 0) {
+			return 'No dates selected'
+		}
+
+		let new90Days = latestTime + 91 * 24 * 3600 * 1000
+
+		return `${new Date(new90Days).toLocaleDateString('en-GB')}`
+	}
 
 	const handleDayStyle = (element, date, events) => {
 		let elementStyle = element.style
@@ -169,8 +180,9 @@ const Dashboard = () => {
 		if (events[0].isControlDate) {
 			if (events[0].endDate.getTime() === date.getTime() + 60 * 60 * 1000) {
 				// CONTROL DATE
-				elementStyle.background = 'grey' //'#1A8FE3'
+				// elementStyle.background = 'grey' //'#1A8FE3'
 				elementStyle.borderBottom = `3px solid black`
+				elementStyle.borderRight = `3px solid black`
 			} else {
 				// CONTROL RANGE
 				elementStyle.borderBottom = `3px solid black`
@@ -181,7 +193,7 @@ const Dashboard = () => {
 			elementStyle.background = 'rgb(50, 97, 159)'
 		}
 	}
-	console.log('selectedDates: ', selectedDates)
+	// console.log('selectedDates: ', selectedDates)
 
 	return (
 		<div id="dashboard">
@@ -239,15 +251,20 @@ const Dashboard = () => {
 						<p>3. Right-click to remove selection </p>
 					</div>
 				</div>
-				<h4>Days Stayed In Control Period </h4>
+				<h4>Days stayed in control period </h4>
 				<div className="counter-block bottom-border-shadow">
 					{calcTotalStay()}
 				</div>
 				{parseInt(calcTotalStay()) >= 0 && (
 					<>
-						<h4>Days To Stay Left</h4>
+						<h4>Days to stay left</h4>
 						<div className="counter-block bottom-border-shadow">
 							{90 - parseInt(calcTotalStay())}
+						</div>
+
+						<h4>Re-enter for new 90 days</h4>
+						<div className="counter-block bottom-border-shadow">
+							{getNew90Days()}
 						</div>
 					</>
 				)}
@@ -279,6 +296,15 @@ const Dashboard = () => {
 							href="https://www.schengenvisainfo.com/"
 						>
 							SchengenVisaInfo
+						</a>
+					</p>
+					<p>
+						<a
+							style={{ color: 'rgb(50, 97, 159)' }}
+							target="_blank"
+							href="https://www.linkedin.com/in/martijnvanven/"
+						>
+							Contact
 						</a>
 					</p>
 				</div>
