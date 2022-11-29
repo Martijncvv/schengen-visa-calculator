@@ -2,6 +2,8 @@
 
 If you want to find out how long you can stay in the EU Schengen Area, every government forwards you to a calculator with a horrible User Experience. Hence I decided to build an improved calculator.
 
+<!-- [Website](https://docs.etherscan.io/). -->
+
 ## Previews
 
 ### Rebranded Schengen Visa Calculator

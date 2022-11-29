@@ -103,7 +103,7 @@ const Dashboard = () => {
 		let stayInControlRange = 0
 
 		selectedDates.forEach((dateRange) => {
-			if (dateRange.id != 9999) {
+			if (dateRange.id !== 9999) {
 				let startTime = dateRange.startDate.getTime()
 				let endTime = dateRange.endDate.getTime()
 				let checkTime = startTime
@@ -125,7 +125,7 @@ const Dashboard = () => {
 
 		let latestTime = 0
 		selectedDates.forEach((dateRange) => {
-			if (dateRange.id != 9999) {
+			if (dateRange.id !== 9999) {
 				let endTime = dateRange.endDate.getTime()
 				if (endTime > latestTime) {
 					latestTime = endTime
@@ -133,7 +133,7 @@ const Dashboard = () => {
 			}
 		})
 
-		if (latestTime == 0) {
+		if (latestTime === 0) {
 			return 0
 		}
 		return latestTime
@@ -146,7 +146,7 @@ const Dashboard = () => {
 
 		let latestTime = getLatestStayTime()
 
-		if (latestTime == 0) {
+		if (latestTime === 0) {
 			return 'No dates selected'
 		}
 
