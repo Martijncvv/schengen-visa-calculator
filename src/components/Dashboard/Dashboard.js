@@ -9,6 +9,7 @@ const Dashboard = () => {
 	const [selectedDates, setSelectedDates] = useState([])
 
 	useEffect(() => {
+		console.log('isMobile ', isMobile)
 		const handleContextmenu = (e) => {
 			e.preventDefault()
 		}
@@ -19,6 +20,7 @@ const Dashboard = () => {
 	}, [])
 
 	const handleRightClickDay = (rangeInfo) => {
+		console.log('MOBILE handleMobileRangeClick')
 		if (rangeInfo.events.length === 1) {
 			setSelectedDates((selectedDates) => [
 				...selectedDates.filter(
@@ -257,7 +259,7 @@ const Dashboard = () => {
 					dataSource={selectedDates}
 					onDayContextMenu={(e) => handleRightClickDay(e)}
 					onRangeSelected={(e) =>
-						isMobile ? handleMobileRangeClick : handleRangeClick(e)
+						isMobile ? handleMobileRangeClick(e) : handleRangeClick(e)
 					}
 				/>
 				<div id="calendar-legenda-field" className="bottom-border-shadow">
