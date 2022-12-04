@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import Calendar from 'rc-year-calendar'
 import './Dashboard.css'
 
@@ -39,6 +40,53 @@ const Dashboard = () => {
 					),
 				])
 			}
+		}
+	}
+
+	let mobileRangeStartDate = ''
+	const handleMobileRangeClick = (rangeInfo) => {
+		if (mobileRangeStartDate) {
+			if (
+				rangeInfo.startDate.getTime() < mobileRangeStartDate.startDate.getTime()
+			) {
+				console.log('NEW DATE < OLD DATE')
+				return
+			}
+
+			let id = rangeInfo.calendar._dataSource
+				? rangeInfo.calendar._dataSource.length
+				: 0
+			let startDate = new Date(
+				mobileRangeStartDate.startDate.getTime() + 86400000
+			)
+			let endDate = new Date(rangeInfo.endDate)
+
+			let newDateRange = {
+				id,
+				startDate,
+				endDate,
+				isControlDate: false,
+			}
+
+			setSelectedDates((selectedDates) => [...selectedDates, newDateRange])
+			mobileRangeStartDate = ''
+		} else {
+			mobileRangeStartDate = rangeInfo
+
+			let id = rangeInfo.calendar._dataSource
+				? rangeInfo.calendar._dataSource.length
+				: 0
+			let startDate = new Date(mobileRangeStartDate.startDate)
+			let endDate = new Date(rangeInfo.endDate)
+
+			let newDateRange = {
+				id,
+				startDate,
+				endDate,
+				isControlDate: false,
+			}
+
+			setSelectedDates((selectedDates) => [...selectedDates, newDateRange])
 		}
 	}
 
@@ -207,8 +255,10 @@ const Dashboard = () => {
 					// allowOverlap={false}
 					enableRangeSelection={true}
 					dataSource={selectedDates}
-					onDayContextMenu={(evt) => handleRightClickDay(evt)}
-					onRangeSelected={(e) => handleRangeClick(e)}
+					onDayContextMenu={(e) => handleRightClickDay(e)}
+					onRangeSelected={(e) =>
+						isMobile ? handleMobileRangeClick : handleRangeClick(e)
+					}
 				/>
 				<div id="calendar-legenda-field" className="bottom-border-shadow">
 					<h5>Legenda</h5>
