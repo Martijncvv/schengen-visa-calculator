@@ -302,7 +302,7 @@ const Dashboard = () => {
 					<div id="top-explanation-field" className="bottom-border-shadow">
 						<p>1. Set control date; entry/ exit date</p>
 						<p>2. Select days stayed in Schengen on calendar</p>
-						<p>3. Right-click to remove selection </p>
+						<p>3. Right-click to remove selection</p>
 					</div>
 				</div>
 				<h4>Days stayed in control period </h4>

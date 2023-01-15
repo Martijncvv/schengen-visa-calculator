@@ -137,13 +137,6 @@ div > h4 {
 	padding: 12px 4px;
 }
 
-#calendar-field {
-	width: 100%;
-}
-#info-field {
-	width: 100%;
-}
-
 .bottom-border-shadow {
 	border-radius: 8px;
 
@@ -152,6 +145,14 @@ div > h4 {
 	box-shadow: 0 6px 5px rgb(2 2 2 / 2%);
 	box-shadow: 0 12px 10px rgb(2 2 2 / 3%);
 }
+
+#calendar-field {
+	width: 100%;
+}
+#info-field {
+	width: 100%;
+}
+
 /* Tablet */
 @media (min-width: 900px) {
 	#calendar-field {
